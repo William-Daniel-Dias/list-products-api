@@ -7,9 +7,9 @@ export const makeUserController = () => {
 
     const register = async (request, response, next) => {
         try {
-            const { name, email, password} = request.body
+            const { name, email, password } = request.body
 
-            const user = await service.register({ name, email, password})
+            const user = await service.register({ name, email, password })
 
             return response.status(201).json({
                 id: user.id,
@@ -23,9 +23,9 @@ export const makeUserController = () => {
 
     const login = async (request, response, next) => {
         try {
-            const { email, password} = request.body
+            const { email, password } = request.body
 
-            const tokens = await service.login({ email, password }) 
+            const tokens = await service.login({ email, password })
 
             return response.json(tokens)
         } catch (error) {
@@ -33,8 +33,8 @@ export const makeUserController = () => {
         }
     }
 
-    const me = [ensureAuth, async (request, response) => 
-        response.json({ userId: request.user.id})]
+    const me = [ensureAuth, async (request, response) =>
+        response.json({ userId: request.user.id })]
 
     return { register, login, me }
 } 

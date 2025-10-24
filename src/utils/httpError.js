@@ -9,6 +9,6 @@ export class HttpError extends Error {
         this.status = status
         this.code = code
         this.datails = details
-        
+
     }
 }

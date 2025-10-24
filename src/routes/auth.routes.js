@@ -7,9 +7,13 @@ export const authRouter = () => {
     const r = Router()
     const ctrl = makeUserController()
 
-    r.post("/register", validate({ body: registerSchema}, ctrl.register))
-    r.post("/login", validate({ body: loginSchema}, ctrl.login))
+    r.post("/register", validate({ body: registerSchema }), ctrl.register)
+    r.post("/login", validate({ body: loginSchema }), ctrl.login)
     r.get("/me", ctrl.me)
+
+    r.get("/health", (_, reponse) => {
+        reponse.json({ ok: true })
+    })
 
     return r
 }

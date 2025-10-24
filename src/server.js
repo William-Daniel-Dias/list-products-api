@@ -4,7 +4,7 @@ import { env } from "./config/env.js"
 const boodstrap = async () => {
     const app = createApp()
 
-    app.listen(env.port, () => console.log(`HTTP on : $ ${env.port}`))
+    app.listen(env.port, () => console.log(`HTTP on : ${env.port}`))
 }
 
 await boodstrap()
