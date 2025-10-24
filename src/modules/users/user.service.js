@@ -5,7 +5,7 @@ import { makeUserRepoMemory } from "./user.repo.memory.js"
 import { HttpError } from "../../utils/httpError.js"
 import { env } from "../../config/env.js"
 
-export const makeUserRepoMemory = () => {
+export const makeUserService = () => {
     const repo = makeUserRepoMemory()
 
     const register = async ({ name, email, password }) => {
