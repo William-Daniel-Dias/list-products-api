@@ -15,7 +15,7 @@ export const makeProductService = () => {
             )
         }
 
-        return repo.create({ name, price, createBy: userId })
+        return repo.create({ name, price, createdBy: userId })
     }
 
     const list = async ({ q, order = "id", dir = "ASC", page = 1, limit = 10 }) => {
@@ -42,8 +42,8 @@ export const makeProductService = () => {
         return found
     }
 
-    const patch = async ({ id, date }) => {
-        const updated = await repo.update({ id, date })
+    const patch = async ({ id, data }) => {
+        const updated = await repo.update({ id, data })
 
         if (!updated) {
             throw new HttpError(

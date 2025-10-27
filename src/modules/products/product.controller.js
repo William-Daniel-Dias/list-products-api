@@ -33,7 +33,7 @@ export const makeProductController = () => {
 
     const get = async (request, response, next) => {
         try {
-            return response.json(await service.get(Number(request.params.id)));
+            return response.json(await service.get({ id: Number(request.params.id) }));
 
         } catch (error) {
             return next(error);
@@ -43,7 +43,7 @@ export const makeProductController = () => {
 
     const patch = async (request, response, next) => {
         try {
-            return response.json(await service.patch(Number(request.params.id), request.body));
+            return response.json(await service.patch({id:Number(request.params.id), data:request.body}));
         }
         catch (error) {
             return next(error);
@@ -52,7 +52,9 @@ export const makeProductController = () => {
 
     const remove = async (request, response, next) => {
         try {
-            await service.remove(Number(request.params.id)); return response.status(204).send();
+            await service.remove({id:Number(request.params.id)});
+            
+            return response.status(204).send();
         }
         catch (error) {
             return next(error);
