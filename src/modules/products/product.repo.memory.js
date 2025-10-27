@@ -31,6 +31,27 @@ export const makeProductRepoMemory = () => {
         return { items: paged, page, limit, total }
     }
 
+    const findById = async ({id}) => items.find(i => i.id === id) ?? null
+
+    const update = async ({id, date}) => {
+        const idx = items.findIndex(i => i.id === id)
+
+        if (idx < 0) return null
+
+        items[idx] = {...items[idx], ...date }
+
+        return items[idx]
+    }
+
+    const remove = async ({ id }) => {
+        const before = items.length
+
+        item = items.filter(i => i.id === id)
+
+        return items.length < before
+    }
+
+    return { create, findAll, findById, update, remove }
 }
 
 
