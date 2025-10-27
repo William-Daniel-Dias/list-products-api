@@ -13,7 +13,7 @@ export const listProductsQuery = z.object({
     limit: z.coerce().int().positive().max(100).optional(),
 })
 
-export const listProductsParams = z.object({
+export const productIdParams = z.object({
   id: z.coerce().number().int().positive()  
 })
 
